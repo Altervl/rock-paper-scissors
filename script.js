@@ -1,37 +1,48 @@
-// GET computer input.
+// Function for getting computer choice for a round.
 function getComputerChoice() {
-    // GET a random number.
     let number = Math.random() * 100;
 
-    // IF the number < 35, return "rock",
     if (number < 35) {
         return "rock";
     }
-    // ELSEIF number >= 35 AND number <= 65, returt "paper",
     else if (number >= 35 && number <= 65) {
         return "paper";
     }
-    // ELSE return "scissors".
     else {
         return "scissors";
     }
 }
-
-console.groupCollapsed("Test input");
-console.log(getComputerChoice());
-
-// GET user input.
-function getHumanChoice() {
-    // GET answer from the user and return it in low case.
-    let answer = prompt("Rock, paper or scissors?\nCancel to end the game.") || "cancel";
+// Function for getting user choice for a round.
+function getUserChoice() {
+    let answer = prompt("Rock, paper or scissors?");
+    // Make the value case insensitive.
     return answer.toLowerCase();
 }
 
-console.log(getHumanChoice());
-console.groupEnd();
+// Get computer and user inputs.
+const computerChoice = getComputerChoice();
+const userChoice = getUserChoice();
 
-// IF user input beats computer input, PRINT "user wins", 
-// ELSEIF otherwise, PRINT "computer wins", 
-// ELSEIF user input is equal to computer input, PRINT "draw", repeat the round.
-// Run FOR 5 rounds in total.
-// PRINT "<user/computer> wins tha match".
+// Function for plaing one round.
+function playRound(computer, user) {
+    if ((computer === "rock" && user === "paper") 
+     || (computer === "paper" && user === "scissors")
+     || (computer === "scissors" && user === "rock")) {
+        return "You win";
+    }
+    
+    if ((computer === "paper" && user === "rock")
+     || (computer === "rock" && user === "scissors")
+     || (computer === "scissors" && user === "paper")) {
+        return "You lose";
+    }
+
+    return "Draw";
+}
+
+result = playRound(computerChoice, userChoice);
+console.log(`${result}\ncomputer: ${computerChoice}, user: ${userChoice}`)
+
+// TODO:
+// Run for 5 rounds in total.
+// Print "<user/computer> wins tha game".
