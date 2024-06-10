@@ -17,7 +17,19 @@ function getComputerChoice() {
     }
 }
 
+console.groupCollapsed("Test input");
+console.log(getComputerChoice());
+
 // GET user input.
+function getHumanChoice() {
+    // GET answer from the user and return it in low case.
+    let answer = prompt("Rock, paper or scissors?\nCancel to end the game.") || "cancel";
+    return answer.toLowerCase();
+}
+
+console.log(getHumanChoice());
+console.groupEnd();
+
 // IF user input beats computer input, PRINT "user wins", 
 // ELSEIF otherwise, PRINT "computer wins", 
 // ELSEIF user input is equal to computer input, PRINT "draw", repeat the round.
